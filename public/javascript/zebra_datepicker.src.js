@@ -1008,17 +1008,17 @@
                 '<div class="Zebra_DatePicker">' +
                     '<table class="dp_header">' +
                         '<tr>' +
-                            '<td class="dp_previous">' + plugin.settings.header_navigation[0] + '</td>' +
-                            '<td class="dp_caption">&#032;</td>' +
-                            '<td class="dp_next">' + plugin.settings.header_navigation[1] + '</td>' +
+                            '<td class="dp_previous"><span>' + plugin.settings.header_navigation[0] + '</span></td>' +
+                            '<td class="dp_caption"><span>&#032;</span></td>' +
+                            '<td class="dp_next"><span>' + plugin.settings.header_navigation[1] + '</span></td>' +
                         '</tr>' +
                     '</table>' +
                     '<table class="dp_daypicker"></table>' +
                     '<table class="dp_monthpicker"></table>' +
                     '<table class="dp_yearpicker"></table>' +
                     '<table class="dp_footer"><tr>' +
-                        '<td class="dp_today"' + (plugin.settings.show_clear_date !== false ? ' style="width:50%"' : '') + '>' + show_select_today + '</td>' +
-                        '<td class="dp_clear"' + (show_select_today !== false ? ' style="width:50%"' : '') + '>' + plugin.settings.lang_clear_date + '</td>' +
+                        '<td class="dp_today"' + (plugin.settings.show_clear_date !== false ? ' style="width:50%"' : '') + '><span>' + show_select_today + '</span></td>' +
+                        '<td class="dp_clear"' + (show_select_today !== false ? ' style="width:50%"' : '') + '><span>' + plugin.settings.lang_clear_date + '</span></td>' +
                     '</tr></table>' +
                 '</div>';
 
@@ -1903,7 +1903,7 @@
                 if (i % 7 === 0 && plugin.settings.show_week_number)
 
                     // show ISO 8601 week number
-                    html += '<td class="dp_week_number">' + getWeekNumber(new Date(selected_year, selected_month, (i - days_from_previous_month + 1))) + '</td>';
+                    html += '<td class="dp_week_number"><span>' + getWeekNumber(new Date(selected_year, selected_month, (i - days_from_previous_month + 1))) + '</span></td>';
 
                 // the number of the day in month
                 var day = (i - days_from_previous_month + 1);
@@ -1926,12 +1926,12 @@
                 // if this is a day from the previous month
                 if (i < days_from_previous_month)
 
-                    html += '<td class="' + (plugin.settings.select_other_months && !is_disabled(real_year, real_month, real_day) ? 'dp_not_in_month_selectable date_' + real_date : 'dp_not_in_month') + '">' + (plugin.settings.select_other_months || plugin.settings.show_other_months ? str_pad(days_in_previous_month - days_from_previous_month + i + 1, plugin.settings.zero_pad ? 2 : 0) : '&nbsp;') + '</td>';
+                    html += '<td class="' + (plugin.settings.select_other_months && !is_disabled(real_year, real_month, real_day) ? 'dp_not_in_month_selectable date_' + real_date : 'dp_not_in_month') + '"><span>' + (plugin.settings.select_other_months || plugin.settings.show_other_months ? str_pad(days_in_previous_month - days_from_previous_month + i + 1, plugin.settings.zero_pad ? 2 : 0) : '&nbsp;') + '</span></td>';
 
                 // if this is a day from the next month
                 else if (day > days_in_month)
 
-                    html += '<td class="' + (plugin.settings.select_other_months && !is_disabled(real_year, real_month, real_day) ? 'dp_not_in_month_selectable date_' + real_date : 'dp_not_in_month') + '">' + (plugin.settings.select_other_months || plugin.settings.show_other_months ? str_pad(day - days_in_month, plugin.settings.zero_pad ? 2 : 0) : '&nbsp;') + '</td>';
+                    html += '<td class="' + (plugin.settings.select_other_months && !is_disabled(real_year, real_month, real_day) ? 'dp_not_in_month_selectable date_' + real_date : 'dp_not_in_month') + '"><span>' + (plugin.settings.select_other_months || plugin.settings.show_other_months ? str_pad(day - days_in_month, plugin.settings.zero_pad ? 2 : 0) : '&nbsp;') + '</span></td>';
 
                 // if this is a day from the current month
                 else {
@@ -1970,7 +1970,7 @@
                     }
 
                     // print the day of the month
-                    html += '<td' + (class_name !== '' ? ' class="' + $.trim(class_name) + '"' : '') + '>' + (plugin.settings.zero_pad ? str_pad(day, 2) : day) + '</td>';
+                    html += '<td' + (class_name !== '' ? ' class="' + $.trim(class_name) + '"' : '') + '><span>' + (plugin.settings.zero_pad ? str_pad(day, 2) : day) + '</span></td>';
 
                 }
 
@@ -2027,7 +2027,7 @@
                 else if (current_system_month == i && current_system_year == selected_year) class_name += ' dp_current';
 
                 // first three letters of the month's name
-                html += '<td class="' + $.trim(class_name) + '">' + ($.isArray(plugin.settings.months_abbr) && undefined !== plugin.settings.months_abbr[i] ? plugin.settings.months_abbr[i] : plugin.settings.months[i].substr(0, 3)) + '</td>';
+                html += '<td class="' + $.trim(class_name) + '"><span>' + ($.isArray(plugin.settings.months_abbr) && undefined !== plugin.settings.months_abbr[i] ? plugin.settings.months_abbr[i] : plugin.settings.months[i].substr(0, 3)) + '</span></td>';
 
             }
 
@@ -2082,7 +2082,7 @@
                 else if (current_system_year == (selected_year - 7 + i)) class_name += ' dp_current';
 
                 // first three letters of the month's name
-                html += '<td' + ($.trim(class_name) !== '' ? ' class="' + $.trim(class_name) + '"' : '') + '>' + (selected_year - 7 + i) + '</td>';
+                html += '<td' + ($.trim(class_name) !== '' ? ' class="' + $.trim(class_name) + '"' : '') + '><span>' + (selected_year - 7 + i) + '</span></td>';
 
             }
 
