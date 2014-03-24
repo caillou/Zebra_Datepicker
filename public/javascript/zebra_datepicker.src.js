@@ -1159,7 +1159,7 @@
                     select_date(matches[1], matches[2] - 1, matches[3], 'days', $(this));
 
                 // put selected date in the element the plugin is attached to, and hide the date picker
-                else select_date(selected_year, selected_month, to_int($(this).html()), 'days', $(this));
+                else select_date(selected_year, selected_month, to_int($(this).text()), 'days', $(this));
 
             });
 
@@ -1198,7 +1198,7 @@
             yearpicker.delegate('td:not(.dp_disabled)', 'click', function() {
 
                 // set the selected year
-                selected_year = to_int($(this).html());
+                selected_year = to_int($(this).text());
 
                 // if user can select only years
                 if ($.inArray('months', views) == -1)
